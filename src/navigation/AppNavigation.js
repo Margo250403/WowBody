@@ -5,6 +5,7 @@ import {MainScreen} from "../screens/MainScreen";
 import {WeightScreen} from "../screens/WeightScreen";
 import {HeightScreen} from "../screens/HeightScreen";
 import {AgeScreen} from "../screens/AgeScreen";
+import {ActiveLevelScreen} from "../screens/ActiveLevelScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,8 +25,7 @@ export const AppNavigation = () => {
                     component={WeightScreen}
                     options={({route}) => ({
                         title: route.params.headerTitle,
-                        headerTransparent: true,
-                        headerBackTitle: 'Назад'
+                        headerBackTitle: 'Назад',
                     })}
                 />
                 <Stack.Screen
@@ -33,7 +33,6 @@ export const AppNavigation = () => {
                     component={HeightScreen}
                     options={({route}) => ({
                         title: route.params.headerTitle,
-                        headerTransparent: true,
                         headerBackTitle: 'Назад'
                     })}
                 />
@@ -42,7 +41,14 @@ export const AppNavigation = () => {
                     component={AgeScreen}
                     options={({route}) => ({
                         title: route.params.headerTitle,
-                        headerTransparent: true,
+                        headerBackTitle: 'Назад'
+                    })}
+                />
+                <Stack.Screen
+                    name="ActiveLevelScreen"
+                    component={ActiveLevelScreen}
+                    options={({route}) => ({
+                        title: route.params.headerTitle,
                         headerBackTitle: 'Назад'
                     })}
                 />
