@@ -16,9 +16,7 @@ export const WeightScreen = ({navigation}) => {
     const MIN_IMT = 18.5;
 
     const checkImtIndex = () => {
-        const IMT = parseInt(weightValue) / Math.pow(smToMeters(height), 2)
-        setImtValue(IMT);
-        return IMT >= MIN_IMT;
+        return imtValue >= MIN_IMT;
     }
 
     const smToMeters = (sm) => {
@@ -29,8 +27,8 @@ export const WeightScreen = ({navigation}) => {
         dispatch(weight(weightValue));
         dispatch(itmIndex(imtValue));
         if (checkImtIndex()) {
-            navigation.navigate("AgeScreen", {
-                headerTitle: 'Выберите ваш возраст'
+            navigation.navigate("IMTScreen", {
+                headerTitle: ''
             });
         } else {
             setErrorContent(
@@ -53,10 +51,15 @@ export const WeightScreen = ({navigation}) => {
         } else {
             setIsDisabled(true);
         }
+        const IMT = parseInt(text) / Math.pow(smToMeters(height), 2)
+        setImtValue(IMT);
     }
 
     return (
         <View style={styles.container}>
+            <Text style={styles.title}>
+                Введите ваш вес
+            </Text>
             <Input changeHandler={onChange} type={'кг'}/>
             {errorContent}
             <NextButton isDisabled={isDisabled} handler={toWeightScreen} text={'Дальше'}/>
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         width: "100%"
     },
     error: {
@@ -91,5 +94,11 @@ const styles = StyleSheet.create({
         color: '#ff1f1f',
         fontSize: 12,
         textAlign: 'center'
+    },
+    title: {
+        marginTop: 100,
+        marginBottom: 150,
+        fontSize: 24,
+        fontWeight: 'bold'
     }
 });

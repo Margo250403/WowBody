@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {View, StyleSheet} from "react-native";
+import {View, StyleSheet, Text} from "react-native";
 import {NextButton} from "../components/NextButton";
 import {Input} from "../components/Input";
 import {useDispatch} from "react-redux";
@@ -12,7 +12,7 @@ export const HeightScreen = ({navigation}) => {
     const toWeightScreen = () => {
         dispatch(height(heightValue));
         navigation.navigate("WeightScreen", {
-            headerTitle: 'Введите ваш вес'
+            headerTitle: ''
         });
     }
     const onChange = (text) => {
@@ -25,6 +25,9 @@ export const HeightScreen = ({navigation}) => {
     }
     return (
         <View style={styles.container}>
+            <Text style={styles.title}>
+                Введите ваш рост
+            </Text>
             <Input changeHandler={onChange} type={'см'}/>
 
             <NextButton isDisabled={isDisabled} handler={toWeightScreen} text={'Дальше'}/>
@@ -37,7 +40,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
-        justifyContent: "center",
-        width: "100%"
+        justifyContent: "flex-start",
+        width: "100%",
+    },
+    title: {
+        marginTop: 100,
+        marginBottom: 150,
+        fontSize: 24,
+        fontWeight: 'bold'
     }
 });

@@ -6,6 +6,10 @@ import {WeightScreen} from "../screens/WeightScreen";
 import {HeightScreen} from "../screens/HeightScreen";
 import {AgeScreen} from "../screens/AgeScreen";
 import {ActiveLevelScreen} from "../screens/ActiveLevelScreen";
+import {ProblemZoneScreen} from "../screens/ProblemZoneScreen";
+import {IMTScreen} from "../screens/IMTScreen";
+import {TrainingPlanScreen} from "../screens/TrainintPlanScreen";
+import {TrainingScreen} from "../screens/TrainingScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +41,14 @@ export const AppNavigation = () => {
                     })}
                 />
                 <Stack.Screen
+                    name="IMTScreen"
+                    component={IMTScreen}
+                    options={({route}) => ({
+                        title: route.params.headerTitle,
+                        headerBackTitle: 'Назад'
+                    })}
+                />
+                <Stack.Screen
                     name="AgeScreen"
                     component={AgeScreen}
                     options={({route}) => ({
@@ -50,6 +62,32 @@ export const AppNavigation = () => {
                     options={({route}) => ({
                         title: route.params.headerTitle,
                         headerBackTitle: 'Назад'
+                    })}
+                />
+                <Stack.Screen
+                    name="ProblemZoneScreen"
+                    component={ProblemZoneScreen}
+                    options={({route}) => ({
+                        title: route.params.headerTitle,
+                        headerBackTitle: 'Назад'
+                    })}
+                />
+                <Stack.Screen
+                    name="TrainingPlanScreen"
+                    component={TrainingPlanScreen}
+                    options={({route}) => ({
+                        title: route.params.headerTitle,
+                        headerBackTitle: 'Назад'
+                    })}
+                />
+                <Stack.Screen
+                    name="TrainingScreen"
+                    component={TrainingScreen}
+                    getId={({params})=> params.id}
+                    options={({route}) => ({
+                        title: route.params.headerTitle,
+                        headerBackTitle: 'Назад',
+                        headerTransparent: true,
                     })}
                 />
             </Stack.Navigator>

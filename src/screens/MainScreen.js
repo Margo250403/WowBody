@@ -1,11 +1,11 @@
 import React from "react";
-import {View, Text, StyleSheet, TouchableOpacity, ImageBackground} from "react-native";
+import {View, Text, StyleSheet, ImageBackground} from "react-native";
 import {NextButton} from "../components/NextButton";
 
 export const MainScreen = ({navigation}) => {
     const toHeightScreen = () => {
         navigation.navigate("HeightScreen", {
-            headerTitle: 'Введите ваш рост'
+            headerTitle: ''
         });
     }
     return (
@@ -42,4 +42,5 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: "bold"
     },
+
 });
